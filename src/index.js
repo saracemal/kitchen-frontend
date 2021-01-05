@@ -1,5 +1,13 @@
 //  Snack Handler
 
+/* DOM elements */
+const pantry = document.querySelector("div#pantry")
+const snackForm = document.querySelector("#snack-form")
+const likeBtn = document.querySelector(".like-btn")
+const dislikeBtn = document.querySelector(".dislike-btn")
+const snackDiv = document.querySelector("#snack-card")
+const snackSafe = document.querySelector("#snack-safe")
+
 let currentSnackId = 1
 let currentUserId = 1
 
@@ -9,31 +17,48 @@ function snackCount() {
     console.log(`updated ID: ${currentSnackId}`)
 }
 
-/* DOM elements */
-const pantry = document.querySelector("div#pantry")
-const snackForm = document.querySelector("#snack-form")
-const likeBtn = document.querySelector(".like-btn")
-const dislikeBtn = document.querySelector(".dislike-btn")
+function removeSnackFromDom() {
+    snackDiv.innerHTML = ''
+    snackCount()
+    renderSnack()
+}
 
+function renderToSnackSafe(snackObj) {
+    removeSnackFromDom(snackObj)
+    snackSafe.append(snackObj)
+}
 /* event listeners */
 
 likeBtn.addEventListener("click", event => {
+
     const likeObj = {
         user_id: currentUserId,
         snack_id: currentSnackId
     }
     client.post("likes/", likeObj)
         .then(newLike => console.log(newLike))
-    snackCount()
+
+    client.get(`snacks/${currentSnackId}`)
+        .then(response => {
+            const snackObj = response
+            console.log(snackObj)
+            renderToSnackSafe(snackObj)
+        })
+
+
+
 })
 
-
-// pantry.addEventListener("click", event => {
-
-//     if (event.target.matches(".like-btn")) {
-//         } 
-//     else 
-// })
+dislikeBtn.addEventListener("click", event => {
+    const snackObj = client.get(`snacks/${currentSnackId}`)
+    const dislikeObj = {
+        user_id: currentUserId,
+        snack_id: currentSnackId
+    }
+    client.post("dislikes/", dislikeObj)
+        .then(newDislike => console.log(newDislike))
+    removeSnackFromDom(snackObj)
+})
 
 snackForm.addEventListener("submit", event => {
     event.preventDefault()
@@ -46,7 +71,7 @@ snackForm.addEventListener("submit", event => {
     const newSnackObj = {
         name: name,
         bio: bio,
-        recipe: recipe,
+        recipe: [recipe],
         image_url: imageUrl
     }
 
@@ -67,7 +92,7 @@ function renderIngredients(ingredientObj) {
 }
 
 function renderSnack(snackObj) {
-    const snackDiv = document.querySelector("#snack-card")
+    // const snackDiv = document.querySelector("#snack-card")
     const img = document.querySelector(".pantry-image")
     const snackName = document.querySelector(".snack-name")
     const bioP = document.querySelector(".bio")
