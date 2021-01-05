@@ -14,7 +14,7 @@ const recipeForm = document.querySelector("#recipe-form")
 //     event.preventDefault()
 
 //     const newRecipeObj = {
-        
+
 //     }
 // })
 
@@ -25,8 +25,8 @@ const recipeForm = document.querySelector("#recipe-form")
 function renderIngredient(ingredientObj) {
     const ingredientsUl = document.querySelector(".snack-ingredients")
     const ingredientsLi = document.createElement("li")
-        ingredientsLi.textContent = ingredientObj
-        ingredientsUl.append(ingredientsLi)
+    ingredientsLi.textContent = ingredientObj
+    ingredientsUl.append(ingredientsLi)
 
 }
 
@@ -48,7 +48,7 @@ function renderSnacks(snackObj) {
 
 /* fetch functions */
 
-function 
+// function 
 
 function getSnacks() {
     fetch("http://localhost:3000/api/v1/snacks")
