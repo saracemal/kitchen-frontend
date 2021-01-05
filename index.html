@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/main.css">
+    <script src="./src/FetchClient.js"></script>
     <script src="./src/index.js" defer></script>
     <title>Kitchen</title>
 </head>
@@ -22,22 +23,24 @@
                 <input type="text" name="bio" id="recipe-bio" value="bio?" />
                 <input type="text" name="recipe" id="recipe" value="recipe?" />
                 <input type="text" name="image_url" id="recipe-image" value="image?" />
-                <input type="text" value="submit recipe!" />
-              </form>
+                <input type="submit" class="new-recipe-btn">submit recipe!</button>
+            </form>
         </div>
         <div id="pantry">
-            <img class="pantry-image" src="https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png" alt="placeholder" style="max-width: 500px;" />
-            <h1 class="snack-name"></h1>
-            <div class="info">
-                <h5>Bio</h5>
+            <div id="snack-card">
+                <img class="pantry-image" src="https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png" alt="placeholder" style="max-width: 500px;" />
+                <h1 class="snack-name"></h1>
+                <div class="info">
+                    <h5>Bio</h5>
                     <p class="bio"></p>
+                    <hr />
+                    <h5>Ingredients</h5>
+                    <ul class="snack-ingredients">
+                    </ul>
+                </div>
+                <button type="submit" class="like-btn">✅</button>
+                <button type="submit" class="dislike-btn">❌</button>
             </div>
-            <hr />
-            <h5>Ingredients</h5>
-                <ul class="snack-ingredients">
-            </ul>
-            <button type="submit" class="like-btn">✅</button>
-            <button type="submit" class="dislike-btn">❌</button>
         </div>
 
         <div id="snack-safe">

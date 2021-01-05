@@ -1,11 +1,19 @@
 /* DOM elements */
 const pantry = document.querySelector("div#pantry")
 const recipeForm = document.querySelector("#recipe-form")
+const likeBtn = document.querySelector(".like-btn")
+const dislikeBtn = document.querySelector(".dislike-btn")
 
 /* event listeners */
+
+likeBtn.addEventListener("click", event => {
+
+})
+
+
 // pantry.addEventListener("click", event => {
 
-//     if (event.target.matches("#like-btn")) {
+//     if (event.target.matches(".like-btn")) {
 //         } 
 //     else 
 // })
@@ -31,6 +39,7 @@ function renderIngredient(ingredientObj) {
 }
 
 function renderSnacks(snackObj) {
+    const snackDiv = document.querySelector("#snack-card")
     const img = document.querySelector(".pantry-image")
     const snackName = document.querySelector(".snack-name")
     const bioP = document.querySelector(".bio")
@@ -40,10 +49,13 @@ function renderSnacks(snackObj) {
     img.src = snackObj.image_url
     snackName.textContent = snackObj.name
 
+    snackDiv.append(img, snackName, )
+
     snackObj.recipe.forEach(ingredient => {
         renderIngredient(ingredient)
     })
 }
+
 
 
 /* fetch functions */
@@ -63,6 +75,13 @@ function getSnacks() {
 
 
 
+
 // /* initialize */
 
-getSnacks()
+// getSnacks()
+client.get("snacks/")
+    .then(snackArray =>
+        snackArray.forEach(snackObj => {
+            renderSnacks(snackObj)
+        })
+    )
