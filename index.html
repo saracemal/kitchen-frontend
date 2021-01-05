@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="./styles/main.css">
     <script src="./src/FetchClient.js"></script>
     <script src="./src/index.js" defer></script>
     <title>Kitchen</title>
@@ -16,14 +16,14 @@
         <h2>tinder for snacks</h2>
     </header>
     <main>
-        <div id="new-recipe">
-            <form id="recipe-form" data-id="insert spiceblend ID" autocomplete="off">
+        <div id="new-snack">
+            <form id="snack-form" data-id="insert snack ID" autocomplete="off">
                 <h3>add recipe</h3>
-                <input type="text" name="name" id="recipe-name" value="name?" />
-                <input type="text" name="bio" id="recipe-bio" value="bio?" />
-                <input type="text" name="recipe" id="recipe" value="recipe?" />
-                <input type="text" name="image_url" id="recipe-image" value="image?" />
-                <input type="submit" class="new-recipe-btn">submit recipe!</button>
+                <input type="text" name="name" id="recipe-name" placeholder="name?" />
+                <input type="text" name="bio" id="recipe-bio" placeholder="bio?" />
+                <input type="text" name="recipe" id="recipe" placeholder="recipe?" />
+                <input type="text" name="image_url" id="recipe-image" placeholder="image?" />
+                <button type="submit" class="submit-btn">submit recipe 🔒</button>
             </form>
         </div>
         <div id="pantry">
@@ -31,10 +31,10 @@
                 <img class="pantry-image" src="https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png" alt="placeholder" style="max-width: 500px;" />
                 <h1 class="snack-name"></h1>
                 <div class="info">
-                    <h5>Bio</h5>
+                    <h5 class="bio-header">About Me</h5>
                     <p class="bio"></p>
                     <hr />
-                    <h5>Ingredients</h5>
+                    <h5 class="ing-header"></h5>
                     <ul class="snack-ingredients">
                     </ul>
                 </div>
