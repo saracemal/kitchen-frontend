@@ -1,0 +1,26 @@
+body {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: #333
+}
+
+p {
+    padding: 10px;
+}
+
+#wrapper {
+    margin: 0 auto;
+    width: 1200px;
+}
+
+#snack-safe {
+    float: left;
+    background: #FFFFFF;
+    width: 650px;
+}
+
+#pantry {
+    background: #55ff333f;
+    width: 550px;
+    float: left;
+}
