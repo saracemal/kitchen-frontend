@@ -20,12 +20,19 @@ function snackCount() {
 function removeSnackFromDom() {
     snackDiv.innerHTML = ''
     snackCount()
-    renderSnack()
+    client.get(`snacks/${currentSnackId}`)
+        .then(response => {
+            const snackObj = response
+            console.log(snackObj)
+            renderSnack(snackObj)
+        })
+
 }
 
 function renderToSnackSafe(snackObj) {
-    removeSnackFromDom(snackObj)
+
     snackSafe.append(snackObj)
+    removeSnackFromDom(snackObj)
 }
 /* event listeners */
 
@@ -65,13 +72,13 @@ snackForm.addEventListener("submit", event => {
 
     const name = snackForm.name.value
     const bio = snackForm.bio.value
-    const recipe = snackForm.recipe.value
+    const recipe = snackForm.recipe.value.split(",")
     const imageUrl = snackForm.image_url.value
 
     const newSnackObj = {
         name: name,
         bio: bio,
-        recipe: [recipe],
+        recipe: recipe,
         image_url: imageUrl
     }
 
