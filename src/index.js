@@ -8,6 +8,8 @@ const dislikeBtn = document.querySelector(".dislike-btn")
 const snackDiv = document.querySelector("#snack-card")
 const snackSafe = document.querySelector("#snack-safe")
 const ingredientsUl = document.querySelector(".snack-ingredients")
+const unmatchBtn = document.querySelector(".unmatch-btn")
+const snackSafeCard = document.querySelector("#snack-safe-card")
 
 
 const img = document.querySelector(".pantry-image")
@@ -21,7 +23,7 @@ const ingH5 = document.querySelector(".ing-header")
 let currentSnackId = 1
 let currentUserId = 1
 
-function snackCount() {
+function snackCount() { // this works for rendertoSafe
     console.log(`current ID: ${currentSnackId}`)
     currentSnackId++
     console.log(`updated ID: ${currentSnackId}`)
@@ -37,15 +39,22 @@ function removeSnackFromDom() {
             console.log(snackObj)
             renderSnack(snackObj)
         })
-
 }
 
 function renderToSnackSafe(snackObj) {
+    // snackName.textContent = snackObj.name
+    // snackSafeCard.append(img, snackName, unmatchBtn)
+    // snackSafe.append(snackSafeCard)
 
-    snackSafe.append(snackObj)
     removeSnackFromDom(snackObj)
+    appendToSnackSafe(snackObj)
+    // snackSafe.append(snackObj)
 }
 /* event listeners */
+
+// unmatchBtn.addEventListener("click", event => {
+//     snackSafeCard.innerHTML = ''
+// })
 
 likeBtn.addEventListener("click", event => {
 
@@ -97,9 +106,15 @@ snackForm.addEventListener("submit", event => {
         .then(newSnackObj => console.log(newSnackObj))
 })
 
-
-
 /* render functions */
+
+function appendToSnackSafe(snackObj) {
+    img.dataset.id = snackObj.id
+    img.src = snackObj.image_url
+    snackName.textContent = snackObj.name
+    snackSafeCard.append(img, snackName, unmatchBtn)
+    snackSafe.append(snackSafeCard)
+}
 
 function renderIngredients(ingredientObj) {
     // const ingredientsUl = document.querySelector(".snack-ingredients")
