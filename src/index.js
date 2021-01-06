@@ -3,6 +3,7 @@
 let currentSnackId = 1
 let currentUserId = 1
 let filterSnacks = []
+let likedSnacks = []
 
 /* DOM elements */
 const pantry = document.querySelector("div#pantry")
@@ -12,6 +13,9 @@ const dislikeBtn = document.querySelector(".dislike-btn")
 const snackDiv = document.querySelector("#snack-card")
 const snackSafe = document.querySelector("#snack-safe")
 const ingredientsUl = document.querySelector(".snack-ingredients")
+const unmatchBtn = document.createElement("button")
+const snackSafeCard = document.createElement("div")
+unmatchBtn.className = "unmatch-btn"
 
 
 const img = document.querySelector(".pantry-image")
@@ -71,6 +75,12 @@ snackForm.addEventListener("submit", event => {
     getNewSnackList()
 })
 
+snackSafeCard.addEventListener("click", event => {
+    // need to click on the corresponding unmatch button to remove from dom 
+    if (event.target.matches(".unmatch-btn"))
+    snackSafeCard.innerHTML = ''
+})
+
 // Render Functions
 
 function renderSnack(snackObj) {
@@ -104,10 +114,10 @@ function renderIngredients(ingredientObj) {
 function createSnackTile(snackObj) {
     const cardImg = document.createElement("img")
     const cardName = document.createElement("h5")
-    const unmatchBtn = document.createElement("button")
-    const snackSafeCard = document.createElement("div")
+    // const unmatchBtn = document.createElement("button")
+    // const snackSafeCard = document.createElement("div")
 
-    unmatchBtn.className = "unmatch-btn"
+    // unmatchBtn.className = "unmatch-btn"
     snackSafeCard.className = "snack-safe-card"
 
     cardImg.dataset.id = snackObj.id
@@ -142,12 +152,23 @@ function checkForInteraction (snackArray, currentUserId){
     return filterSnacks
 }
 
+function checkForLikedSnacks (snackArray, currentUserId){
+    const likedSnacks = snackArray.filter(snackObj => {
+        const hasBeenLiked = snackObj.likes.some(like => (like.user_id === currentUserId) )
+        // const hasBeenDisliked = snackObj.dislikes.some(dislike => (dislike.user_id === currentUserId) )
+        return hasBeenLiked
+    })
+    return likedSnacks 
+}
+
 
 // GET Next Uninteracted Snck
 function getNewSnackList(){
     client.get("snacks/")
     .then(snackArray => {
         filterSnacks = checkForInteraction(snackArray, currentUserId)
+        likedSnacks = checkForLikedSnacks(snackArray, currentUserId)
+        console.log(likedSnacks)
         currentSnackId = (filterSnacks[0].id)
         console.log(currentSnackId)
         renderSnack(filterSnacks[0])
