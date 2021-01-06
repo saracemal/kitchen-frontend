@@ -7,6 +7,16 @@ const likeBtn = document.querySelector(".like-btn")
 const dislikeBtn = document.querySelector(".dislike-btn")
 const snackDiv = document.querySelector("#snack-card")
 const snackSafe = document.querySelector("#snack-safe")
+const ingredientsUl = document.querySelector(".snack-ingredients")
+
+
+const img = document.querySelector(".pantry-image")
+const snackName = document.querySelector(".snack-name")
+const bioP = document.querySelector(".bio")
+const info = document.querySelector(".info")
+const bioH5 = document.querySelector(".bio-header")
+const ingH5 = document.querySelector(".ing-header")
+
 
 let currentSnackId = 1
 let currentUserId = 1
@@ -18,8 +28,9 @@ function snackCount() {
 }
 
 function removeSnackFromDom() {
-    snackDiv.innerHTML = ''
     snackCount()
+    snackDiv.innerHTML = ''
+    // snackCount()
     client.get(`snacks/${currentSnackId}`)
         .then(response => {
             const snackObj = response
@@ -91,7 +102,7 @@ snackForm.addEventListener("submit", event => {
 /* render functions */
 
 function renderIngredients(ingredientObj) {
-    const ingredientsUl = document.querySelector(".snack-ingredients")
+    // const ingredientsUl = document.querySelector(".snack-ingredients")
     const ingredientsLi = document.createElement("li")
     ingredientsLi.textContent = ingredientObj
     ingredientsUl.append(ingredientsLi)
@@ -100,12 +111,12 @@ function renderIngredients(ingredientObj) {
 
 function renderSnack(snackObj) {
     // const snackDiv = document.querySelector("#snack-card")
-    const img = document.querySelector(".pantry-image")
-    const snackName = document.querySelector(".snack-name")
-    const bioP = document.querySelector(".bio")
-    const info = document.querySelector(".info")
-    const bioH5 = document.querySelector(".bio-header")
-    const ingH5 = document.querySelector(".ing-header")
+    // const img = document.querySelector(".pantry-image")
+    // const snackName = document.querySelector(".snack-name")
+    // const bioP = document.querySelector(".bio")
+    // const info = document.querySelector(".info")
+    // const bioH5 = document.querySelector(".bio-header")
+    // const ingH5 = document.querySelector(".ing-header")
 
     bioP.textContent = snackObj.bio
     bioH5.append(bioP)
@@ -116,6 +127,8 @@ function renderSnack(snackObj) {
 
     info.append(bioH5, ingH5, likeBtn, dislikeBtn)
     snackDiv.append(img, snackName, info)
+
+    ingredientsUl.innerHTML = "" 
 
     snackObj.recipe.forEach(ingredient => {
         renderIngredients(ingredient)
