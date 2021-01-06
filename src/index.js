@@ -136,4 +136,21 @@ client.get("snacks/")
     .then(snackArray => {
         currentSnackId = snackArray[0].id
         renderSnack(snackArray[0])
+        // checkForInteraction(snackArray, currentUserId)
     })
+
+
+//  CHECK FOR PREVIOUS INTERACTION
+
+// let newArr
+
+// function checkForInteraction (snackArray, currentUserId){
+//     snackArray.forEach(snackObj => {
+//         snackObj.likes.forEach(like => {
+//             if (like.user_id !== currentUserId){
+//                 newArr.push(snackObj)
+//             }
+//         })
+//     })
+//     console.log(newArr)
+// }

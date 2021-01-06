@@ -1,3 +1,6 @@
+/*   GLOBAL CLASSES   */
+
+
 body {
     font-family: Verdana, Arial, Helvetica, sans-serif;
     font-size: 13px;
@@ -7,6 +10,12 @@ body {
 p {
     padding: 10px;
 }
+
+
+
+
+
+/* INDIVIDUAL IDS */
 
 #wrapper {
     margin: 0 auto;
@@ -24,3 +33,20 @@ p {
     width: 550px;
     float: left;
 }
+
+
+shadow {
+    box-shadow: 0 10px 40px -10px rgba(0,64,128,.2);
+    transition: box-shadow .3s;
+}
+
+
+
+/*
+Cocktail
+#16697a /* teal
+#db6400 /* orange
+#ffa62b /* honey
+#f8f1f1 /* ivory
+https://colorhunt.co/palette/219688
+*/
