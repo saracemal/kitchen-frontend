@@ -75,11 +75,7 @@ snackForm.addEventListener("submit", event => {
     getNewSnackList()
 })
 
-snackSafeCard.addEventListener("click", event => {
-    // need to click on the corresponding unmatch button to remove from dom 
-    if (event.target.matches(".unmatch-btn"))
-    snackSafeCard.innerHTML = ''
-})
+
 
 // Render Functions
 
@@ -123,6 +119,12 @@ function createSnackTile(snackObj) {
     cardImg.dataset.id = snackObj.id
     cardImg.src = snackObj.image_url
     cardName.textContent = snackObj.name
+
+    snackSafeCard.addEventListener("click", event => {
+        // need to click on the corresponding unmatch button to remove from dom 
+        if (event.target.matches(".unmatch-btn"))
+        snackSafeCard.innerHTML = ''
+    })
 
     snackSafeCard.append(cardImg, cardName, unmatchBtn)
     snackSafe.append(snackSafeCard)
@@ -169,6 +171,7 @@ function getNewSnackList(){
         filterSnacks = checkForInteraction(snackArray, currentUserId)
         likedSnacks = checkForLikedSnacks(snackArray, currentUserId)
         console.log(likedSnacks)
+        likedSnacks.forEach(snack => createSnackTile(snack))
         currentSnackId = (filterSnacks[0].id)
         console.log(currentSnackId)
         renderSnack(filterSnacks[0])
