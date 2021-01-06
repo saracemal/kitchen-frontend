@@ -13,9 +13,9 @@ const dislikeBtn = document.querySelector(".dislike-btn")
 const snackDiv = document.querySelector("#snack-card")
 const snackSafe = document.querySelector("#snack-safe")
 const ingredientsUl = document.querySelector(".snack-ingredients")
-const unmatchBtn = document.createElement("button")
-const snackSafeCard = document.createElement("div")
-unmatchBtn.className = "unmatch-btn"
+// const unmatchBtn = document.createElement("button")
+// const snackSafeCard = document.createElement("div")
+// unmatchBtn.className = "unmatch-btn"
 
 
 const img = document.querySelector(".pantry-image")
@@ -32,18 +32,9 @@ const ingH5 = document.querySelector(".ing-header")
 //     snackSafeCard.innerHTML = ''
 // })
 
+
 likeBtn.addEventListener("click", event => {
-    const likeObj = {
-        user_id: currentUserId,
-        snack_id: currentSnackId
-    }
-    client.post("likes/", likeObj)
-        .then(newLike => console.log(`New Like Created: ${newLike}`))
-    client.get(`snacks/${currentSnackId}`)
-        .then(response => {
-            const snackObj = response
-            renderToSnackSafe(snackObj)
-        })
+    likeSnack()
 })
 
 dislikeBtn.addEventListener("click", event => {
@@ -61,17 +52,18 @@ snackForm.addEventListener("submit", event => {
     event.preventDefault()
     const name = snackForm.name.value
     const bio = snackForm.bio.value
-    const recipe = snackForm.recipe.value.split(",")
+    const recipe = snackForm.recipe.value
     const imageUrl = snackForm.image_url.value
     const newSnackObj = {
         name: name,
         bio: bio,
-        recipe: JSON.stringify(recipe),
+        recipe: recipe,
         image_url: imageUrl
     }
     client.post("snacks/", newSnackObj)
         .then(newSnackObj => console.log(newSnackObj))
     snackForm.reset()
+    likeSnack()
     getNewSnackList()
 })
 
@@ -107,31 +99,46 @@ function renderIngredients(ingredientObj) {
     ingredientsUl.append(ingredientsLi)
 }
 
-function createSnackTile(snackObj) {
+function createSnackTile(snackObj, newLikeId) {
     const cardImg = document.createElement("img")
+    cardImg.className = "snack-safe-card-image"
     const cardName = document.createElement("h5")
-    // const unmatchBtn = document.createElement("button")
-    // const snackSafeCard = document.createElement("div")
+    const unmatchBtn = document.createElement("button")
+    const snackSafeCard = document.createElement("div")
 
-    // unmatchBtn.className = "unmatch-btn"
+    let newNewLikeId = newLikeId
+    console.log(newLikeId)
+
+    unmatchBtn.className = "unmatch-btn"
+    unmatchBtn.textContent = "Unlike"
     snackSafeCard.className = "snack-safe-card"
+    snackSafeCard.dataset.id = snackObj.id
+    console.log(`card id: ${snackSafeCard.dataset.id}`)
 
-    cardImg.dataset.id = snackObj.id
+    // cardImg.dataset.id = snackObj.id
     cardImg.src = snackObj.image_url
     cardName.textContent = snackObj.name
 
     snackSafeCard.addEventListener("click", event => {
         // need to click on the corresponding unmatch button to remove from dom 
-        if (event.target.matches(".unmatch-btn"))
-        snackSafeCard.innerHTML = ''
+        // if (event.target.matches(".unmatch-btn"))
+        // const snackId = snackSafeCard.dataset.id
+        // console.log(`clicked: ${snackSafeCard.dataset.id}`)
+        console.log(newLikeId)
+        console.log(`like id: ${newNewLikeId}`)
+        client.delete(`likes/${newNewLikeId}`)
+        // .then(console.log())
+
+
+        snackSafeCard.remove()
     })
 
     snackSafeCard.append(cardImg, cardName, unmatchBtn)
     snackSafe.append(snackSafeCard)
 }
 
-function renderToSnackSafe(snackObj) {
-    createSnackTile(snackObj)
+function renderToSnackSafe(snackObj, newLikeId) {
+    createSnackTile(snackObj, newLikeId)
     // snackSafe.append(snackObj)
     removeSnackFromDom(snackObj)
 }
@@ -163,6 +170,21 @@ function checkForLikedSnacks (snackArray, currentUserId){
     return likedSnacks 
 }
 
+function likeSnack(){
+    const likeObj = {
+        user_id: currentUserId,
+        snack_id: currentSnackId
+    }
+    let newLikeId = 0
+    client.post("likes/", likeObj)
+        .then(newLike => newLikeId = newLike.id)
+    client.get(`snacks/${currentSnackId}`)
+        .then(response => {
+            const snackObj = response
+            renderToSnackSafe(snackObj, newLikeId)
+        })
+}
+
 
 // GET Next Uninteracted Snck
 function getNewSnackList(){
@@ -170,10 +192,11 @@ function getNewSnackList(){
     .then(snackArray => {
         filterSnacks = checkForInteraction(snackArray, currentUserId)
         likedSnacks = checkForLikedSnacks(snackArray, currentUserId)
+        // console.log(likedSnacks)
         console.log(likedSnacks)
-        likedSnacks.forEach(snack => createSnackTile(snack))
+        likedSnacks.forEach(snack => createSnackTile(snack, snack.likes[0].id))
         currentSnackId = (filterSnacks[0].id)
-        console.log(currentSnackId)
+        // console.log(currentSnackId)
         renderSnack(filterSnacks[0])
     })
 }

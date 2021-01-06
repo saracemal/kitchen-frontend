@@ -38,14 +38,23 @@ h3.new-snack {
     color: #f8f1f1;
 }
 
+button {
+    width: 60px;
+    height: 30px;
+}
+
+
 /* INDIVIDUAL IDS */
 
 #new-snack {
-    
+    text-align: center;
     background: #ffa62b;
     width: 800px
     box-shadow: 0 10px 40px -10px rgba(0,64,128,.2);
     transition: box-shadow .3s;
+    padding: 25px;
+    margin: 50px;
+    border-radius: 15px;
 }
 
 .snack-name {
@@ -67,6 +76,12 @@ h3.new-snack {
     float: right;
     box-shadow: 0 10px 40px -10px rgba(0,64,128,.2);
     transition: box-shadow .3s;
+    padding: 25px;
+    margin: 50px;
+    border-radius: 15px;
+    max-height: 900px;
+    overflow: scroll;
+    display: space-evenly;
 }
 
 #pantry {
@@ -75,14 +90,59 @@ h3.new-snack {
     float: left;
     box-shadow: 0 10px 40px -10px rgba(0,64,128,.2);
     transition: box-shadow .3s;
+    padding: 25px;
+    margin: 50px;
+    border-radius: 15px;
+    max-height: 900px;
+    display: block;
+    text-align: center;
+}
+
+.pantry-image {
+    width: 450px;
+    margin: 25px, 50px, 205px, 50px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+
+}
+
+.info {
+    text-align:left;
+}
+
+.like-btn {
+    float: right;
+    border-radius: 50px ;
+  height: 100px ;
+  width: 100px ;
+  font-size: 5em ;
+  color: green;
+}
+
+.dislike-btn {
+    float: left;
+    border-radius: 50px ;
+  height: 100px ;
+  width: 100px ;
+  font-size: 5em ;
+  color: red;
 }
 
 .snack-safe-card {
-    /* background: #55ff333f; */
-    width: 500px;
+    background: #55ff333f;
+    padding: 15px;
+    margin: 20px;
+    border-radius: 5px;
+    width: 200px;
     float: left;
     box-shadow: 0 10px 40px -10px rgba(0,64,128,.2);
     transition: box-shadow .3s;
+}
+
+
+.snack-safe-card-image {
+    max-width: 200px;
 }
 
 
