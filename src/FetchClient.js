@@ -27,12 +27,14 @@ class FetchClient {
     }
 
     post(endpoint, dataObj) {
+        console.log(dataObj)
         return fetch(this.baseUrl + endpoint, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(dataObj)
+                
             })
             .then(response => response.json())
     }
