@@ -23,41 +23,7 @@ const bioH5 = document.querySelector(".bio-header")
 const ingH5 = document.querySelector(".ing-header")
 
 
-<<<<<<< HEAD
-let currentSnackId = 1
-let currentUserId = 1
-
-function snackCount() { // this works for rendertoSafe
-    console.log(`current ID: ${currentSnackId}`)
-    currentSnackId++
-    console.log(`updated ID: ${currentSnackId}`)
-}
-
-function removeSnackFromDom() {
-    snackCount()
-    snackDiv.innerHTML = ''
-    // snackCount()
-    client.get(`snacks/${currentSnackId}`)
-        .then(response => {
-            const snackObj = response
-            console.log(snackObj)
-            renderSnack(snackObj)
-        })
-}
-
-function renderToSnackSafe(snackObj) {
-    // snackName.textContent = snackObj.name
-    // snackSafeCard.append(img, snackName, unmatchBtn)
-    // snackSafe.append(snackSafeCard)
-
-    removeSnackFromDom(snackObj)
-    appendToSnackSafe(snackObj)
-    // snackSafe.append(snackObj)
-}
-/* event listeners */
-=======
 // Event Listeners
->>>>>>> aaron
 
 // unmatchBtn.addEventListener("click", event => {
 //     snackSafeCard.innerHTML = ''
@@ -105,27 +71,7 @@ snackForm.addEventListener("submit", event => {
     getNewSnackList()
 })
 
-<<<<<<< HEAD
-/* render functions */
-
-function appendToSnackSafe(snackObj) {
-    img.dataset.id = snackObj.id
-    img.src = snackObj.image_url
-    snackName.textContent = snackObj.name
-    snackSafeCard.append(img, snackName, unmatchBtn)
-    snackSafe.append(snackSafeCard)
-}
-
-function renderIngredients(ingredientObj) {
-    // const ingredientsUl = document.querySelector(".snack-ingredients")
-    const ingredientsLi = document.createElement("li")
-    ingredientsLi.textContent = ingredientObj
-    ingredientsUl.append(ingredientsLi)
-
-}
-=======
 // Render Functions
->>>>>>> aaron
 
 function renderSnack(snackObj) {
     // const snackDiv = document.querySelector("#snack-card")
@@ -155,8 +101,17 @@ function renderIngredients(ingredientObj) {
     ingredientsUl.append(ingredientsLi)
 }
 
+function appendToSnackSafe(snackObj) {
+    img.dataset.id = snackObj.id
+    img.src = snackObj.image_url
+    snackName.textContent = snackObj.name
+    snackSafeCard.append(img, snackName, unmatchBtn)
+    snackSafe.append(snackSafeCard)
+}
+
 function renderToSnackSafe(snackObj) {
-    snackSafe.append(snackObj)
+    appendToSnackSafe(snackObj)
+    // snackSafe.append(snackObj)
     removeSnackFromDom(snackObj)
 }
 

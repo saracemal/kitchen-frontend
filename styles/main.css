@@ -77,7 +77,7 @@ h3.new-snack {
     transition: box-shadow .3s;
 }
 
-#snack-card {
+#snack-safe-card {
     /* background: #55ff333f; */
     width: 500px;
     float: left;
