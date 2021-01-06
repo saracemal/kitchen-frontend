@@ -12,8 +12,7 @@ const dislikeBtn = document.querySelector(".dislike-btn")
 const snackDiv = document.querySelector("#snack-card")
 const snackSafe = document.querySelector("#snack-safe")
 const ingredientsUl = document.querySelector(".snack-ingredients")
-const unmatchBtn = document.querySelector(".unmatch-btn")
-const snackSafeCard = document.querySelector("#snack-safe-card")
+
 
 const img = document.querySelector(".pantry-image")
 const snackName = document.querySelector(".snack-name")
@@ -68,6 +67,7 @@ snackForm.addEventListener("submit", event => {
     }
     client.post("snacks/", newSnackObj)
         .then(newSnackObj => console.log(newSnackObj))
+    snackForm.reset()
     getNewSnackList()
 })
 
@@ -101,16 +101,25 @@ function renderIngredients(ingredientObj) {
     ingredientsUl.append(ingredientsLi)
 }
 
-function appendToSnackSafe(snackObj) {
-    img.dataset.id = snackObj.id
-    img.src = snackObj.image_url
-    snackName.textContent = snackObj.name
-    snackSafeCard.append(img, snackName, unmatchBtn)
+function createSnackTile(snackObj) {
+    const cardImg = document.createElement("img")
+    const cardName = document.createElement("h5")
+    const unmatchBtn = document.createElement("button")
+    const snackSafeCard = document.createElement("div")
+
+    unmatchBtn.className = "unmatch-btn"
+    snackSafeCard.className = "snack-safe-card"
+
+    cardImg.dataset.id = snackObj.id
+    cardImg.src = snackObj.image_url
+    cardName.textContent = snackObj.name
+
+    snackSafeCard.append(cardImg, cardName, unmatchBtn)
     snackSafe.append(snackSafeCard)
 }
 
 function renderToSnackSafe(snackObj) {
-    appendToSnackSafe(snackObj)
+    createSnackTile(snackObj)
     // snackSafe.append(snackObj)
     removeSnackFromDom(snackObj)
 }
