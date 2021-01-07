@@ -6,24 +6,38 @@ let filterSnacks = []
 let likedSnacks = []
 
 /* DOM elements */
+
+/*  PANTRY  */
+
 const pantry = document.querySelector("div#pantry")
-const snackForm = document.querySelector("#snack-form")
-const likeBtn = document.querySelector(".like-btn")
-const dislikeBtn = document.querySelector(".dislike-btn")
-const snackDiv = document.querySelector("#snack-card")
-const snackSafe = document.querySelector("#snack-safe")
-const ingredientsUl = document.querySelector(".snack-ingredients")
-// const unmatchBtn = document.createElement("button")
-// const snackSafeCard = document.createElement("div")
-// unmatchBtn.className = "unmatch-btn"
 
-
-const img = document.querySelector(".pantry-image")
 const snackName = document.querySelector(".snack-name")
+const img = document.querySelector(".pantry-image")
 const bioP = document.querySelector(".bio")
 const info = document.querySelector(".info")
 const bioH5 = document.querySelector(".bio-header")
+const ingredientsUl = document.querySelector(".snack-ingredients")
 
+const likeBtn = document.querySelector(".like-btn")
+const dislikeBtn = document.querySelector(".dislike-btn")
+
+/* FORM */
+const snackForm = document.querySelector("#snack-form")
+
+/*  SNACK SAFE  */
+
+const snackDiv = document.querySelector("#snack-card")
+const snackSafe = document.querySelector("#snack-safe")
+
+
+/*  MODAL  */
+const modalDiv = document.querySelector(".modal-content")
+const modalImg = document.querySelector(".modal-image")
+const modalName = document.querySelector(".modal-name")
+const modalInfo = document.querySelector(".modal-info")
+const modalBioHeader = document.querySelector(".modal-bio-header")
+const modalBio = document.querySelector(".modal-bio")
+const modalUl = document.querySelector(".modal-snack-ingredients")
 
 // Event Listeners
 
@@ -87,10 +101,21 @@ function renderIngredients(ingredientObj) {
 function createSnackTile(snackObj, newLikeId) {
     const cardImg = document.createElement("img")
     cardImg.className = "snack-safe-card-image"
+
     const cardName = document.createElement("h5")
     const unmatchBtn = document.createElement("button")
-    const modalBtn = document.getElementById("myBtn");
+
+
+    // const modalBtn = document.getElementById("myBtn")
+    const modalBtn = document.createElement("button")
+    modalBtn.id = "myBtn"
+    modalBtn.textContent = "View"
+
     const snackSafeCard = document.createElement("div")
+    snackSafeCard.className = "snack-safe-card"
+    snackSafeCard.dataset.id = snackObj.id
+    console.log(`card id: ${snackSafeCard.dataset.id}`)
+
 
     let newNewLikeId = newLikeId
     console.log(newLikeId)
@@ -98,10 +123,8 @@ function createSnackTile(snackObj, newLikeId) {
     unmatchBtn.className = "unmatch-btn"
     unmatchBtn.textContent = "Unlike"
     // modalBtn.className = "modal-btn"
-    modalBtn.textContent = "View"
-    snackSafeCard.className = "snack-safe-card"
-    snackSafeCard.dataset.id = snackObj.id
-    console.log(`card id: ${snackSafeCard.dataset.id}`)
+    
+    
 
     // cardImg.dataset.id = snackObj.id
     cardImg.src = snackObj.image_url
@@ -119,36 +142,61 @@ function createSnackTile(snackObj, newLikeId) {
         // .then(console.log())
         
         snackSafeCard.remove()
-    }
+        }
 
         // MODAL 
         if (event.target.matches("#myBtn")) {
                 const modal = document.getElementById("myModal");
                 // Get the <span> element that closes the modal
-                const span = document.getElementsByClassName("close")[0];
+                const span = document.getElementsByClassName("close")/*[0]*/;
 
                 // When the user clicks the button, open the modal 
                 modalBtn.onclick = function() {
-                modal.style.display = "block";
+                    renderToModal(snackObj)
+                    modal.style.display = "block";
                 }
 
                 // When the user clicks on <span> (x), close the modal
                 span.onclick = function() {
-                modal.style.display = "none";
+                    modal.style.display = "none";
                 }
 
                 // When the user clicks anywhere outside of the modal, close it
                 window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
                 }
-             }
-        }
+        }   
     })
 
     snackSafeCard.append(cardImg, cardName, unmatchBtn, modalBtn)
     snackSafe.append(snackSafeCard)
 }
+
+function renderToModal(snackObj){
+    modalBio.textContent = snackObj.bio
+    // modalBioHeader.append(modalBio)
+    modalImg.dataset.id = snackObj.id
+    modalImg.src = snackObj.image_url
+    modalName.textContent = snackObj.name
+    // modalUl.innerHTML = "" 
+    snackObj.recipe.forEach(ingredient => {
+        const ingredientsLi = document.createElement("li")
+        ingredientsLi.textContent = ingredient
+        modalUl.append(ingredientsLi)
+        }
+
+
+
+
+    )
+}
+
+    // modalInfo.append(modalBio, )
+    // modalDiv.append(modalImg, modalName, modalInfo)
+
+
 
 function renderToSnackSafe(snackObj, newLikeId) {
     createSnackTile(snackObj, newLikeId)

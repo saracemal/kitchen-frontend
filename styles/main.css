@@ -60,7 +60,7 @@ input {
 
 #pantry {
     /* grid-area: 2 / 1 / 5 / 3; */
-    width: 50%;
+    width: 48%;
     height: 1000px;
     padding: 30px;
     margin: 50px;
@@ -136,7 +136,7 @@ input {
     overflow: scroll;
     display: space-evenly; */
 
-    width: 50%;
+    width: 48%;
     height: 1000px;
     padding: 30px;
     margin: 50px;
