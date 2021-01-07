@@ -176,26 +176,16 @@ function createSnackTile(snackObj, newLikeId) {
 
 function renderToModal(snackObj){
     modalBio.textContent = snackObj.bio
-    // modalBioHeader.append(modalBio)
     modalImg.dataset.id = snackObj.id
     modalImg.src = snackObj.image_url
     modalName.textContent = snackObj.name
-    // modalUl.innerHTML = "" 
     snackObj.recipe.forEach(ingredient => {
         const ingredientsLi = document.createElement("li")
         ingredientsLi.textContent = ingredient
         modalUl.append(ingredientsLi)
         }
-
-
-
-
     )
 }
-
-    // modalInfo.append(modalBio, )
-    // modalDiv.append(modalImg, modalName, modalInfo)
-
 
 
 function renderToSnackSafe(snackObj, newLikeId) {
@@ -208,28 +198,6 @@ function removeSnackFromDom() {
     snackDiv.innerHTML = ''
     getNewSnackList()
 }
-
-// function openModal(snackObj) {
-    // const modal = document.getElementById("myModal");
-    // renderSnack(snackObj)
-    // // Get the <span> element that closes the modal
-    // const span = document.getElementsByClassName("close")[0];
-
-    // // When the user clicks on <span> (x), close the modal
-    // span.onclick = function() {
-    // modal.style.display = "none";
-    // }
-
-    // // When the user clicks anywhere outside of the modal, close it
-    // window.onclick = function(event) {
-    // if (event.target == modal) {
-    //     modal.style.display = "none";
-    // }
-    // }
-
-
-
-
 
 // Helper Methods
 
@@ -267,21 +235,39 @@ function likeSnack(){
     }
     
     
-    // GET Next Uninteracted Snck
-    function getNewSnackList(){
-        client.get("snacks/")
-        .then(snackArray => {
-            filterSnacks = checkForInteraction(snackArray, currentUserId)
-            likedSnacks = checkForLikedSnacks(snackArray, currentUserId)
-            // console.log(likedSnacks)
-            console.log(likedSnacks)
-            likedSnacks.forEach(snack => createSnackTile(snack, snack.likes[0].id)) // removed 
-            currentSnackId = (filterSnacks[0].id)
-            // console.log(currentSnackId)
-            renderSnack(filterSnacks[0])
-        })
-    }
-    
-    
-    // /* initialize */
-    getNewSnackList()
+// GET Next Uninteracted Snck
+function getFirstSnackList(){
+    client.get("snacks/")
+    .then(snackArray => {
+        filterSnacks = checkForInteraction(snackArray, currentUserId)
+        likedSnacks = checkForLikedSnacks(snackArray, currentUserId)
+        // console.log(likedSnacks)
+        console.log(`liked: ${likedSnacks}`)
+
+        likedSnacks.forEach(snack => createSnackTile(snack, snack.likes[0].id)) // removed 
+        currentSnackId = (filterSnacks[0].id)
+        // console.log(currentSnackId)
+        renderSnack(filterSnacks[0])
+    })
+}
+
+function getNewSnackList(){
+    client.get("snacks/")
+    .then(snackArray => {
+        filterSnacks = checkForInteraction(snackArray, currentUserId)
+        likedSnacks = checkForLikedSnacks(snackArray, currentUserId)
+        // console.log(likedSnacks)
+        console.log(`liked: ${likedSnacks}`)
+
+        // likedSnacks.forEach(snack => createSnackTile(snack, snack.likes[0].id)) // removed 
+        // currentSnackId = (filterSnacks[0].id)
+        // // console.log(currentSnackId)
+        renderSnack(filterSnacks[0])
+    })
+    console.log(`new filter list ${JSON.stringify(filterSnacks)}`)
+}
+
+
+
+
+getFirstSnackList()
