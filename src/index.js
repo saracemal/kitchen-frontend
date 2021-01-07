@@ -25,7 +25,6 @@ const info = document.querySelector(".info")
 const bioH5 = document.querySelector(".bio-header")
 const ingH5 = document.querySelector(".ing-header")
 
-
 // Event Listeners
 
 // unmatchBtn.addEventListener("click", event => {
@@ -66,8 +65,6 @@ snackForm.addEventListener("submit", event => {
     likeSnack()
     getNewSnackList()
 })
-
-
 
 // Render Functions
 
@@ -121,16 +118,16 @@ function createSnackTile(snackObj, newLikeId) {
 
     snackSafeCard.addEventListener("click", event => {
         // need to click on the corresponding unmatch button to remove from dom 
-        // if (event.target.matches(".unmatch-btn"))
+        if (event.target.matches(".unmatch-btn")) {
         // const snackId = snackSafeCard.dataset.id
         // console.log(`clicked: ${snackSafeCard.dataset.id}`)
         console.log(newLikeId)
         console.log(`like id: ${newNewLikeId}`)
         client.delete(`likes/${newNewLikeId}`)
         // .then(console.log())
-
-
+        
         snackSafeCard.remove()
+        }
     })
 
     snackSafeCard.append(cardImg, cardName, unmatchBtn)
@@ -183,24 +180,24 @@ function likeSnack(){
             const snackObj = response
             renderToSnackSafe(snackObj, newLikeId)
         })
-}
-
-
-// GET Next Uninteracted Snck
-function getNewSnackList(){
-    client.get("snacks/")
-    .then(snackArray => {
-        filterSnacks = checkForInteraction(snackArray, currentUserId)
-        likedSnacks = checkForLikedSnacks(snackArray, currentUserId)
-        // console.log(likedSnacks)
-        console.log(likedSnacks)
-        likedSnacks.forEach(snack => createSnackTile(snack, snack.likes[0].id))
-        currentSnackId = (filterSnacks[0].id)
-        // console.log(currentSnackId)
-        renderSnack(filterSnacks[0])
-    })
-}
-
-
-// /* initialize */
-getNewSnackList()
+    }
+    
+    
+    // GET Next Uninteracted Snck
+    function getNewSnackList(){
+        client.get("snacks/")
+        .then(snackArray => {
+            filterSnacks = checkForInteraction(snackArray, currentUserId)
+            likedSnacks = checkForLikedSnacks(snackArray, currentUserId)
+            // console.log(likedSnacks)
+            console.log(likedSnacks)
+            likedSnacks.forEach(snack => createSnackTile(snack, snack.likes[0].id)) // removed 
+            currentSnackId = (filterSnacks[0].id)
+            // console.log(currentSnackId)
+            renderSnack(filterSnacks[0])
+        })
+    }
+    
+    
+    // /* initialize */
+    getNewSnackList()
