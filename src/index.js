@@ -23,7 +23,7 @@ const snackName = document.querySelector(".snack-name")
 const bioP = document.querySelector(".bio")
 const info = document.querySelector(".info")
 const bioH5 = document.querySelector(".bio-header")
-const ingH5 = document.querySelector(".ing-header")
+
 
 // Event Listeners
 
@@ -82,7 +82,7 @@ function renderSnack(snackObj) {
     img.dataset.id = snackObj.id
     img.src = snackObj.image_url
     snackName.textContent = snackObj.name
-    info.append(bioH5, ingH5, likeBtn, dislikeBtn)
+    info.append(bioH5, likeBtn, dislikeBtn)
     snackDiv.append(img, snackName, info)
     ingredientsUl.innerHTML = "" 
     snackObj.recipe.forEach(ingredient => {

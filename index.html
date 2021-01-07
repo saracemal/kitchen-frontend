@@ -16,44 +16,46 @@
         <h2>Kitchen</h2>
     </header>
     <main>
+        
         <div id="new-snack">
-            
+            <h3 style="font-size: medium; margin: 5px;">Add a Snack</h3>
             <form id="snack-form" data-id="insert snack ID" autocomplete="off">
-                <h3>Add a Snack</h3>
                 <input type="text" name="name" id="recipe-name" placeholder="name?" />
                 <input type="text" name="bio" id="recipe-bio" placeholder="bio?" />
                 <input type="text" name="recipe" id="recipe" placeholder="recipe?" />
                 <input type="text" name="image_url" id="recipe-image" placeholder="image?" />
-                <button type="submit" class="submit-btn">submit recipe 🔒</button>
+                <button type="submit" class="submit-btn">🥨</button>
             </form>
         </div>
-        <div id="pantry">
-            <div id="snack-card">
-                <img class="pantry-image" src="https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png" alt="placeholder" style="max-width: 500px;" />
-                <h1 class="snack-name"></h1>
-                <div class="info">
-                    <h5 class="bio-header">About Me</h5>
-                    <p class="bio"></p>
-                    <hr />
-                    <h5 class="ing-header"></h5>
-                    <ul class="snack-ingredients">
-                    </ul>
-                </div>
-                <div id="buttons"></div>
-                <button type="submit" class="like-btn">✔</button>
-                <button type="submit" class="dislike-btn">✖</button>
-            </div>
-            </div>
-        </div>
 
-        <div id="snack-safe">
-            <h3>snack safe</h3>
-                <!-- <div class="snack-safe-card"></div> -->
-             <!-- <div id="snack-safe-card">
-            <p></p>
-            <button type="submit" class="unmatch-btn">unmatch :( </button> -->
+        <div id="wrapper">
+        
+            <div id="pantry">
+                <div id="snack-card">
+                    <img class="pantry-image" src="https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png" alt="placeholder" style="max-width: 500px;" />
+                    <h1 class="snack-name"></h1>
+                    <div class="info">
+                        <h5 class="bio-header">About Me</h5>
+                        <p class="bio"></p>
+                        <hr />
+                        <ul class="snack-ingredients">
+                        </ul>
+                    </div>
+                    <div id="buttons"></div>
+                    <button type="submit" class="like-btn">✔</button>
+                    <button type="submit" class="dislike-btn">✖</button>
+                </div>
+                </div>
             </div>
-        </div>
+
+            <div id="snack-safe">
+                <h3>Snack Safe</h3>
+                    <!-- <div class="snack-safe-card"></div> -->
+                <!-- <div id="snack-safe-card">
+                <p></p>
+                <button type="submit" class="unmatch-btn">unmatch :( </button> -->
+                </div>
+            </div>
 
         <!-- <div id="myModal" class="modal">
 
@@ -62,7 +64,7 @@
               <span class="close">&times;</span>
               
             </div> -->
-        
+        </div>
     </main>
 
 </body>
