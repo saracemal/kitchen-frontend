@@ -27,10 +27,6 @@ const ingH5 = document.querySelector(".ing-header")
 
 // Event Listeners
 
-// unmatchBtn.addEventListener("click", event => {
-//     snackSafeCard.innerHTML = ''
-// })
-
 
 likeBtn.addEventListener("click", event => {
     likeSnack()
@@ -69,14 +65,6 @@ snackForm.addEventListener("submit", event => {
 // Render Functions
 
 function renderSnack(snackObj) {
-    // const snackDiv = document.querySelector("#snack-card")
-    // const img = document.querySelector(".pantry-image")
-    // const snackName = document.querySelector(".snack-name")
-    // const bioP = document.querySelector(".bio")
-    // const info = document.querySelector(".info")
-    // const bioH5 = document.querySelector(".bio-header")
-    // const ingH5 = document.querySelector(".ing-header")
-
     bioP.textContent = snackObj.bio
     bioH5.append(bioP)
     img.dataset.id = snackObj.id
@@ -101,6 +89,7 @@ function createSnackTile(snackObj, newLikeId) {
     cardImg.className = "snack-safe-card-image"
     const cardName = document.createElement("h5")
     const unmatchBtn = document.createElement("button")
+    const modalBtn = document.getElementById("myBtn");
     const snackSafeCard = document.createElement("div")
 
     let newNewLikeId = newLikeId
@@ -108,6 +97,8 @@ function createSnackTile(snackObj, newLikeId) {
 
     unmatchBtn.className = "unmatch-btn"
     unmatchBtn.textContent = "Unlike"
+    // modalBtn.className = "modal-btn"
+    modalBtn.textContent = "View"
     snackSafeCard.className = "snack-safe-card"
     snackSafeCard.dataset.id = snackObj.id
     console.log(`card id: ${snackSafeCard.dataset.id}`)
@@ -116,6 +107,7 @@ function createSnackTile(snackObj, newLikeId) {
     cardImg.src = snackObj.image_url
     cardName.textContent = snackObj.name
 
+    // UNMATCH 
     snackSafeCard.addEventListener("click", event => {
         // need to click on the corresponding unmatch button to remove from dom 
         if (event.target.matches(".unmatch-btn")) {
@@ -127,10 +119,34 @@ function createSnackTile(snackObj, newLikeId) {
         // .then(console.log())
         
         snackSafeCard.remove()
+    }
+
+        // MODAL 
+        if (event.target.matches("#myBtn")) {
+                const modal = document.getElementById("myModal");
+                // Get the <span> element that closes the modal
+                const span = document.getElementsByClassName("close")[0];
+
+                // When the user clicks the button, open the modal 
+                modalBtn.onclick = function() {
+                modal.style.display = "block";
+                }
+
+                // When the user clicks on <span> (x), close the modal
+                span.onclick = function() {
+                modal.style.display = "none";
+                }
+
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+             }
         }
     })
 
-    snackSafeCard.append(cardImg, cardName, unmatchBtn)
+    snackSafeCard.append(cardImg, cardName, unmatchBtn, modalBtn)
     snackSafe.append(snackSafeCard)
 }
 
@@ -144,6 +160,26 @@ function removeSnackFromDom() {
     snackDiv.innerHTML = ''
     getNewSnackList()
 }
+
+// function openModal(snackObj) {
+    // const modal = document.getElementById("myModal");
+    // renderSnack(snackObj)
+    // // Get the <span> element that closes the modal
+    // const span = document.getElementsByClassName("close")[0];
+
+    // // When the user clicks on <span> (x), close the modal
+    // span.onclick = function() {
+    // modal.style.display = "none";
+    // }
+
+    // // When the user clicks anywhere outside of the modal, close it
+    // window.onclick = function(event) {
+    // if (event.target == modal) {
+    //     modal.style.display = "none";
+    // }
+    // }
+
+
 
 
 
