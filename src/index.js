@@ -80,11 +80,11 @@ snackForm.addEventListener("submit", event => {
 
 function renderSnack(snackObj) {
     bioP.textContent = snackObj.bio
-    bioH5.append(bioP)
+    // bioH5.append(bioP)
     img.dataset.id = snackObj.id
     img.src = snackObj.image_url
     snackName.textContent = snackObj.name
-    info.append(bioH5, likeBtn, dislikeBtn)
+    info.append(likeBtn, dislikeBtn)
     snackDiv.append(img, snackName, info)
     ingredientsUl.innerHTML = "" 
     snackObj.recipe.forEach(ingredient => {

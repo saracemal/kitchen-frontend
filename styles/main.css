@@ -23,31 +23,17 @@ h3 {
 }
 
 #new-snack {
-    /* grid-area: 1 / 1 / 2 / 6; */
-     /* width: 800px;   */
-    /*height: 100px; */
     padding: 25px; 
-    /* margin: 10px; */
+    margin: 10px;
     box-shadow: 10px 10px #4d320dab;  
-    line-height: 15px; */
+    line-height: 15px;
     background: #ffa62b;  
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-  
-
-
-    /* OLD CSS */
-    background: #ffa62b; 
-    /*width: 800px */
-    /* box-shadow: 0 10px 40px -10px rgba(0,64,128,.2);
-    transition: box-shadow .3s; */
-
-
-
-
+    font-size: large;
 
 
     /* max-height: 100vh;
@@ -82,6 +68,9 @@ input {
     margin: 0 auto;
     width: 1200px;
     text-align: center;
+    /* display: flex; */
+    /* justify-content: center; */
+    
     /* grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, 1fr);
     grid-column-gap: 0px;
@@ -89,14 +78,21 @@ input {
 }
 
 #pantry {
-    /* grid-area: 2 / 1 / 5 / 3; */
-    /* width: 48%; */
-    height: 1000px; 
-     padding: 30px;
+    background: #ffa62b;
+    width: 550px;
+    height: 1100px; 
+    padding: 30px;
     margin: 50px; 
-    /* display: block;
-    float: left; */
+    display: flex;
+
     box-shadow: 10px 10px #4d320dab; 
+    overflow: auto;
+    overflow-x: hidden;
+    float: left;
+    box-shadow: 10px 10px #4d320dab;
+    font-size: medium;
+    /* justify-content: center; */
+
 
     /*text-align: center; 
     overflow: auto;
@@ -105,10 +101,8 @@ input {
     /*background: #ffa62b; */
 
     /* OLD CSS */
-    background: #ffa62b;
-    width: 550px;
-    float: left;
-    box-shadow: 10px 10px #4d320dab;
+    
+    
 
 
 }
@@ -139,8 +133,8 @@ input {
     margin: 20px 50px;
     border-radius: 50px ;
     border: 0px;
-    height: 100px ;
-    width: 100px ;
+    height: 115px ;
+    width: 115px ;
     font-size: 5em ;
     color: green;
     box-shadow: 3px 3px #4d320dab;
@@ -151,8 +145,8 @@ input {
     margin: 20px 50px;
     border-radius: 50px ;
     border: 0px;
-    height: 100px ;
-    width: 100px ;
+    height: 115px ;
+    width: 115px  ;
     font-size: 5em ;
     color: red;
     box-shadow: 3px 3px #4d320dab;
@@ -161,12 +155,12 @@ input {
 
 #snack-safe {
     /* grid-area: 2 / 3 / 5 / 6;  */
-    float: left;
+    /* float: left; */
     background: #ffa62b;
-    width: 650px;
+    width: 600px;
+    height: 1100px;
     float: right;
-    box-shadow: 0 10px 40px -10px rgba(0,64,128,.2);
-    transition: box-shadow .3s;
+    box-shadow: 10px 10px #4d320dab;
 
     text-align: center; 
     overflow: scroll;
@@ -175,39 +169,9 @@ input {
 
     padding: 30px;
     margin: 50px; 
-
-    /* float: right;
-    background: #ffa62b;
-    width: 650px;
-    float: right;
-    box-shadow: 0 10px 40px -10px rgba(0,64,128,.2);
-    transition: box-shadow .3s;
-    padding: 25px;
-    margin: 50px;
-    border-radius: 15px; 
-     max-height: 950px; */
-    /* overflow: scroll;
-    display: space-evenly; */
-
-    /* NEWER CSS use THIS ONE!!!! 
-    /* width: 48%; */
-    height: 1000px;
-    /* padding: 30px;
-    margin: 50px;
-    display: block;
-    float: right; */
-    box-shadow: 10px 10px #4d320dab;
-
-    text-align: center;
-    overflow: auto;
-    overflow-x: hidden;
-    display: space-evenly;
-    background: #ffa62b; */
-
-
+    /* justify-content: center; */
 
 }
-
 
 
 .snack-safe-card {
@@ -217,6 +181,7 @@ input {
     width: 200px;
     float: left;
     box-shadow: 3px 3px #4d320dab;
+    font-size: medium;
 }
 
 
@@ -279,58 +244,53 @@ https://colorhunt.co/palette/219688
 
   }
   
-  /* Modal Content */
-  .modal-content {
-
-
+/* Modal Content */
+.modal-content {
     background-color: #ffa62b;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
-
-
-
-    /* background-color: #fefefe; */
-
-
-    /***** margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; *****/
-
-    /* width: 48%; */
-    /****** height: 1000px;
-    /* padding: 30px;
-    margin: 50px; */
-    /******* display: block;
-    /****** float: left; coment this back in 
-    /* box-shadow: 10px 10px #4d320dab; */
-
-    /******text-align: center;
-    /*overflow: auto;
-    /* overflow-x: hidden; */
+    width: fit-content;
     display: space-evenly;
-    background: #ffa62b;
+    font-size: medium;
+}
 
 
-    /*****text-align: center; 
-    overflow: scroll;
-    overflow-x: hidden;
-    display: space-evenly;
-  }
-  
-  /* The Close Button */
-  .close {
+/* The Close Button */
+.close {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
+}
+
+.close:hover,
+.close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
-  }
+}
+
+.modal-image {
+    max-width: 450px;
+    max-height: 500px;
+    margin: 25px, 50px, 205px, 50px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+    box-shadow: 3px 3px #4d320dab;
+}
+
+.modal-name {
+
+
+}
+
+.modal-bio {
+
+}
+
+.modal-snack-ingredients{
+
+}
