@@ -260,7 +260,7 @@ function getNewSnackList(){
         console.log(`liked: ${likedSnacks}`)
 
         // likedSnacks.forEach(snack => createSnackTile(snack, snack.likes[0].id)) // removed 
-        // currentSnackId = (filterSnacks[0].id)
+        currentSnackId = (filterSnacks[0].id)
         // // console.log(currentSnackId)
         renderSnack(filterSnacks[0])
     })

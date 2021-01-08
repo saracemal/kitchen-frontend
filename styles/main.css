@@ -19,17 +19,41 @@ h2 {
 
 #new-snack {
     /* grid-area: 1 / 1 / 2 / 6; */
-    width: 1200px;
-    height: 55px;
-    padding: 25px;
-    margin: 10px;
-    display: inline-block;
-    box-shadow: 10px 10px #4d320dab;
-
-    line-height: 15px;
+     /* width: 800px;   */
+    /*height: 100px; */
+    padding: 25px; 
+    /* margin: 10px; */
+    /* box-shadow: 10px 10px #4d320dab; 
+    line-height: 15px; */
+    background: #ffa62b;  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    background: #ffa62b;
-    
+  
+
+
+    /* OLD CSS */
+    /* background: #ffa62b;
+    width: 800px */
+    /* box-shadow: 0 10px 40px -10px rgba(0,64,128,.2);
+    transition: box-shadow .3s; */
+
+
+
+
+
+
+    /* max-height: 100vh;
+  overflow: scroll;
+  display: flex;
+  flex-flow: row wrap;
+  /* background-color: rgba(255,255,255,0.4); */
+  /* padding: 0px 10px 0px 10px;
+  margin: 0px auto;
+  border-radius: 25px; 
+  justify-content: space-evenly; */ 
     
 }
 
@@ -52,6 +76,7 @@ input {
 #wrapper {
     margin: 0 auto;
     width: 1200px;
+    text-align: center;
     /* grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, 1fr);
     grid-column-gap: 0px;
@@ -60,19 +85,27 @@ input {
 
 #pantry {
     /* grid-area: 2 / 1 / 5 / 3; */
-    width: 48%;
-    height: 1000px;
-    padding: 30px;
-    margin: 50px;
-    display: block;
+    /* width: 48%;
+    height: 1000px; */
+     padding: 30px;
+    margin: 50px; 
+    /* display: block;
     float: left;
-    box-shadow: 10px 10px #4d320dab;
+    box-shadow: 10px 10px #4d320dab; */
 
-    text-align: center;
+    text-align: center; 
     overflow: auto;
     overflow-x: hidden;
     display: space-evenly;
+    /*background: #ffa62b; */
+
+    /* OLD CSS */
     background: #ffa62b;
+    width: 550px;
+    float: left;
+    box-shadow: 0 10px 40px -10px rgba(0,64,128,.2);
+    transition: box-shadow .3s;
+
 
 }
 
@@ -87,6 +120,7 @@ input {
     margin: 25px, 50px, 205px, 50px;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
 
     box-shadow: 3px 3px #4d320dab;
 
@@ -123,6 +157,21 @@ input {
 
 #snack-safe {
     /* grid-area: 2 / 3 / 5 / 6;  */
+    float: left;
+    background: #ffa62b;
+    width: 650px;
+    float: right;
+    box-shadow: 0 10px 40px -10px rgba(0,64,128,.2);
+    transition: box-shadow .3s;
+
+    text-align: center; 
+    overflow: scroll;
+    overflow-x: hidden;
+    display: space-evenly;
+
+    padding: 30px;
+    margin: 50px; 
+
     /* float: right;
     background: #ffa62b;
     width: 650px;
@@ -131,24 +180,27 @@ input {
     transition: box-shadow .3s;
     padding: 25px;
     margin: 50px;
-    border-radius: 15px;
-    max-height: 900px;
-    overflow: scroll;
+    border-radius: 15px; */
+     max-height: 950px; 
+    /* overflow: scroll;
     display: space-evenly; */
 
-    width: 48%;
+    /* NEWER CSS use THIS ONE!!!! 
+    /* width: 48%;
     height: 1000px;
     padding: 30px;
     margin: 50px;
     display: block;
-    float: left;
+    float: right;
     box-shadow: 10px 10px #4d320dab;
 
     text-align: center;
     overflow: auto;
     overflow-x: hidden;
     display: space-evenly;
-    background: #ffa62b;
+    background: #ffa62b; */
+
+
 
 }
 
@@ -158,19 +210,40 @@ input {
     background: #55ff333f;
     padding: 15px;
     margin: 20px;
-    border-radius: 5px;
     width: 200px;
     float: left;
-    box-shadow: 0 10px 40px -10px rgba(0,64,128,.2);
-    transition: box-shadow .3s;
+    box-shadow: 3px 3px #4d320dab;
 }
 
 
 .snack-safe-card-image {
     max-width: 200px;
+    max-height: 200px;
+    object-fit: fill;
+}
+
+.unmatch-btn{
+    width: fit-content;
+    height: fit-content;
+    margin: 5%;
+    border: 0px;
+    color: #f8f1f1;
+    background: #16697a;
+    font-size: large;
+    box-shadow: 3px 3px #4d320dab;
 }
 
 
+#myBtn{
+    width: fit-content;
+    height: fit-content;
+    margin: 5%;
+    border: 0px;
+    color: #f8f1f1;
+    background: #16697a;
+    font-size: large;
+    box-shadow: 3px 3px #4d320dab;
+}
 /*
 Cocktail
 #16697a /* teal
@@ -193,15 +266,54 @@ https://colorhunt.co/palette/219688
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+    text-align: center; 
+    overflow: scroll; 
+    /*overflow-x: hidden;
+    display: space-evenly; */
+
+
   }
   
   /* Modal Content */
   .modal-content {
-    background-color: #fefefe;
+
+
+    background-color: #ffa62b;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+
+
+
+    /* background-color: #fefefe; */
+
+
+    /***** margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; *****/
+
+    /* width: 48%; */
+    /****** height: 1000px;
+    /* padding: 30px;
+    margin: 50px; */
+    /******* display: block;
+    /****** float: left; coment this back in 
+    /* box-shadow: 10px 10px #4d320dab; */
+
+    /******text-align: center;
+    /*overflow: auto;
+    /* overflow-x: hidden; */
+    display: space-evenly;
+    background: #ffa62b;
+
+
+    /*****text-align: center; 
+    overflow: scroll;
+    overflow-x: hidden;
+    display: space-evenly;
   }
   
   /* The Close Button */
