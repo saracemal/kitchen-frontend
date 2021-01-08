@@ -13,9 +13,14 @@ header {
 }
 
 h2 {
-    font-size: 28px;
+    font-size: 60px;
+    font-family: 'Brush Script MT', cursive;
 }
 
+h3 {
+    font-size: 60px;
+    font-family: 'Brush Script MT', cursive;
+}
 
 #new-snack {
     /* grid-area: 1 / 1 / 2 / 6; */
@@ -23,7 +28,7 @@ h2 {
     /*height: 100px; */
     padding: 25px; 
     /* margin: 10px; */
-    /* box-shadow: 10px 10px #4d320dab; 
+    box-shadow: 10px 10px #4d320dab;  
     line-height: 15px; */
     background: #ffa62b;  
     display: flex;
@@ -35,8 +40,8 @@ h2 {
 
 
     /* OLD CSS */
-    /* background: #ffa62b;
-    width: 800px */
+    background: #ffa62b; 
+    /*width: 800px */
     /* box-shadow: 0 10px 40px -10px rgba(0,64,128,.2);
     transition: box-shadow .3s; */
 
@@ -85,15 +90,15 @@ input {
 
 #pantry {
     /* grid-area: 2 / 1 / 5 / 3; */
-    /* width: 48%;
-    height: 1000px; */
+    /* width: 48%; */
+    height: 1000px; 
      padding: 30px;
     margin: 50px; 
     /* display: block;
-    float: left;
-    box-shadow: 10px 10px #4d320dab; */
+    float: left; */
+    box-shadow: 10px 10px #4d320dab; 
 
-    text-align: center; 
+    /*text-align: center; 
     overflow: auto;
     overflow-x: hidden;
     display: space-evenly;
@@ -103,8 +108,7 @@ input {
     background: #ffa62b;
     width: 550px;
     float: left;
-    box-shadow: 0 10px 40px -10px rgba(0,64,128,.2);
-    transition: box-shadow .3s;
+    box-shadow: 10px 10px #4d320dab;
 
 
 }
@@ -180,18 +184,18 @@ input {
     transition: box-shadow .3s;
     padding: 25px;
     margin: 50px;
-    border-radius: 15px; */
-     max-height: 950px; 
+    border-radius: 15px; 
+     max-height: 950px; */
     /* overflow: scroll;
     display: space-evenly; */
 
     /* NEWER CSS use THIS ONE!!!! 
-    /* width: 48%;
+    /* width: 48%; */
     height: 1000px;
-    padding: 30px;
+    /* padding: 30px;
     margin: 50px;
     display: block;
-    float: right;
+    float: right; */
     box-shadow: 10px 10px #4d320dab;
 
     text-align: center;
